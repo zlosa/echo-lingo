@@ -72,7 +72,7 @@ class Settings(BaseSettings):
     )
 
     # Default voice and model settings
-    DEFAULT_VOICE_ID: str = "o47F6fLSHEFdPzySrC5z"
+    DEFAULT_VOICE_ID: str = "9mW7DR7UTehA5cbI4AYo"
     DEFAULT_TTS_MODEL: str = "eleven_multilingual_v2"
     DEFAULT_TRANSLATION_MODEL: str = "gpt-4o-mini"
 

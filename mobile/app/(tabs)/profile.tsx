@@ -29,7 +29,7 @@ export default function ProfileScreen() {
   );
   const [voiceProviderSettings, setVoiceProviderSettings] = useState<VoiceProviderSettings>({
     provider: 'elevenlabs',
-    elevenLabsVoiceId: 'o47F6fLSHEFdPzySrC5z', // Default from backend
+    elevenLabsVoiceId: '9mW7DR7UTehA5cbI4AYo', // Default from backend
     humeVoiceId: '30edfa2e-7d75-45fb-8ccf-e280941393ee', // Default from backend
   });
   const [isSaving, setIsSaving] = useState(false);
@@ -67,7 +67,7 @@ export default function ProfileScreen() {
         const parsedSettings = JSON.parse(savedSettings);
         setVoiceProviderSettings({
           provider: parsedSettings.provider || 'elevenlabs',
-          elevenLabsVoiceId: parsedSettings.elevenLabsVoiceId || 'o47F6fLSHEFdPzySrC5z',
+          elevenLabsVoiceId: parsedSettings.elevenLabsVoiceId || '9mW7DR7UTehA5cbI4AYo',
           humeVoiceId: parsedSettings.humeVoiceId || '30edfa2e-7d75-45fb-8ccf-e280941393ee',
         });
       }
