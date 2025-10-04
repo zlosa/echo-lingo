@@ -11,6 +11,7 @@ import {
   Pressable,
   Platform,
   Alert,
+  ActivityIndicator,
 } from 'react-native';
 import { Audio } from 'expo-av'; // Audio recording and playback library
 import { Ionicons } from '@expo/vector-icons'; // Icons for UI elements
@@ -680,7 +681,10 @@ export default function TranslateScreen() {
       {/* Loading overlay */}
       {isLoading && (
         <View style={styles.loadingContainer}>
-          <Text style={styles.loadingText}>Processing audio...</Text>
+          <View style={styles.loadingContent}>
+            <ActivityIndicator size="small" color="#fff" />
+            <Text style={styles.loadingText}>Processing audio...</Text>
+          </View>
         </View>
       )}
     </View>
@@ -808,6 +812,11 @@ const styles = StyleSheet.create({
     backgroundColor: 'rgba(0,0,0,0.7)',
     justifyContent: 'center',
     alignItems: 'center',
+  },
+  loadingContent: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 8,
   },
   loadingText: {
     color: '#fff',
