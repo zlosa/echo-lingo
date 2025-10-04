@@ -21,6 +21,7 @@ import { HistoryItem } from './history'; // Type definition for history items
 import { router, useFocusEffect } from 'expo-router'; // For navigation and focus events
 import * as FileSystem from 'expo-file-system/legacy'; // For file operations (using legacy API)
 import { VoiceProviderSettings } from '../components/VoiceProviderSelector'; // Voice provider settings
+import * as Haptics from 'expo-haptics';
 
 // API endpoint for audio processing and translation
 const API_URL = 'https://fond-workable-firefly.ngrok-free.app';
@@ -213,6 +214,7 @@ export default function TranslateScreen() {
    */
   const startRecording = async () => {
     try {
+      Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
       // Reset state for new recording
       setProcessingError(null);
       await cleanupResources();
@@ -283,6 +285,7 @@ export default function TranslateScreen() {
     }
 
     try {
+      Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
       setIsRecording(false);
       let uri: string | null = null;
 
@@ -414,6 +417,12 @@ export default function TranslateScreen() {
       setTranscribedText(transcribed_text);
       setTranslatedText(translated_text);
       setTranslatedAudio(fullAudioUrl);
+      setTimeout(() => {
+        if (fullAudioUrl) {
+          playAudio(fullAudioUrl, false);
+        }
+      }, 1000);
+      Haptics.notificationAsync(Haptics.NotificationFeedbackType.Success);
 
       // Save to history
       await saveToHistory({
